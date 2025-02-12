@@ -1,0 +1,22 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+        name: harness-demo
+spec:
+        replicas: 2
+        selector:
+                matchLables:
+                        app: harness-demo
+                template:
+                        metadata:
+                                lables:
+                                        app: harness-demo
+                        spec:
+                                containers:
+                                        - name: harness-demo
+                                          image: mydockerapp
+                                          ports:
+                                                  - containerPort: 3000
+                                          env:
+                                                  - name: PORT
+                                                    value: "3000"
